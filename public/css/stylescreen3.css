@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "Lato-Regular";
+    src: url(../fonts/Lato-Regular.ttf);
+  }
+  @font-face {
+    font-family: "Lato-Black";
+    src: url(../fonts/Lato-Black.ttf);
+  }
+  @font-face {
+    font-family: "Lato-Bold";
+    src: url(../fonts/Lato-Bold.ttf);
+  }
+  @font-face {
+    font-family: "Lato-Light";
+    src: url(../fonts/Lato-Light.ttf);
+  }
+  @font-face {
+    font-family: "Lato-Medium";
+    src: url(../fonts/Lato-Medium.ttf);
+  }
+  @font-face {
+    font-family: "Lato-Semibold";
+    src: url(../fonts/Lato-Semibold.ttf);
+  }
+  @font-face {
+    font-family: "OpenSans-Bold";
+    src: url(../fonts/OpenSans-Bold.ttf);
+  }
+  @font-face {
+    font-family: "OpenSans-Regular";
+    src: url(../fonts/OpenSans-Regular.ttf);
+  }
+  @font-face {
+    font-family: "OpenSans-Semibold";
+    src: url(../fonts/OpenSans-Semibold.ttf);
+  }
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1240px;
+    }
+  }
+#gtco-main-nav {
+    padding: 20px 0;
+}
+#gtco-main-nav .navbar-brand {
+    font-size: 36px;
+    font-family: "Lato-Black";
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(left, #1d3ede, #01e6f8);
+    background: -ms-linear-gradient(left, #1d3ede, #01e6f8);
+    background: -moz-linear-gradient(left, #1d3ede, #01e6f8);
+    background: -o-linear-gradient(left, #1d3ede, #01e6f8);
+    -webkit-background-clip: text;
+    -ms-background-clip: text;
+    -o-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -ms-text-fill-color: transparent;
+    -o-text-fill-color: transparent;
+}
+#gtco-main-nav .bar1, #gtco-main-nav .bar2, #gtco-main-nav .bar3 {
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: 0.4s;
+    display: block;
+    position: relative;
+  }
+  #gtco-main-nav .change .bar1 {
+    -webkit-transform: rotate(-42deg) translate(-2px, 6px);
+    transform: rotate(-42deg) translate(-2px, 6px);
+  }
+  #gtco-main-nav .change .bar2 {
+    opacity: 0;
+  }
+  #gtco-main-nav .change .bar3 {
+    -webkit-transform: rotate(46deg) translate(-4px, -8px);
+    transform: rotate(46deg) translate(-4px, -8px);
+  }
+  #gtco-main-nav .navbar-nav li a {
+    font-family: "OpenSans-Regular";
+    font-size: 18px;
+    color: #666666;
+    padding: 5px 15px !important;
+    text-transform: uppercase;
+  }
+.form{
+    position: absolute;
+    display: table;
+    max-width: 1240px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.form p{
+    display: table-row;
+}
+.form label, .form input{
+    margin: 10px;
+    display: table-cell;
+    font-family: "Lato-Medium";
+    font-size: 22px;
+}
