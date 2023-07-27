@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="public/css/stylescreen3.css" />
+    <title>Retailyst</title>
+    <style>
+      /* Add custom CSS here */
+      .form {
+        max-width: 600px; /* Adjust the width as needed */
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      .success-message {
+        color: #28a745;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light bg-transparent"
+      id="gtco-main-nav"
+    >
+      <div class="container">
+        <a class="navbar-brand">Retailyst</a>
+        <button
+          class="navbar-toggler"
+          data-target="#my-nav"
+          onclick="myFunction(this)"
+          data-toggle="collapse"
+        >
+          <span class="bar1"></span> <span class="bar2"></span>
+          <span class="bar3"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/Project/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#news">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form
+            action=""
+            method="post"
+            class="form"
+            onsubmit="return validateForm()"
+          >
+            <h3 class="text-center mb-4">Questions to be Addressed</h3>
+            <div id="questionFields">
+              <div class="mb-3">
+                <label for="questions" class="form-label">Question 1</label>
+                <textarea
+                  name="questions[]"
+                  class="form-control"
+                  cols="30"
+                  rows="3"
+                  placeholder="Enter your question"
+                  required
+                ></textarea>
+              </div>
+            </div>
+            <div class="text-center mb-3">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="addQuestionField()"
+              >
+                Add More Questions
+              </button>
+            </div>
+            <div class="mb-3">
+              <label for="file" class="form-label"
+                >Upload supporting documents</label
+              >
+              <input type="file" name="file" id="file" class="form-control" />
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+          <div class="success-message" id="successMessage"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let questionCount = 1;
+
+      function addQuestionField() {
+        questionCount++;
+        const questionFields = document.getElementById("questionFields");
+        const newQuestionField = document.createElement("div");
+        newQuestionField.innerHTML = `
+                <div class="mb-3">
+                    <label for="questions" class="form-label">Question ${questionCount}</label>
+                    <textarea name="questions[]" class="form-control" cols="30" rows="3" placeholder="Enter your question" required></textarea>
+                </div>
+            `;
+        questionFields.appendChild(newQuestionField);
+      }
+
+      function validateForm() {
+        const questionElements = document.querySelectorAll(
+          "textarea[name='questions[]']"
+        );
+        for (const questionElement of questionElements) {
+          const question = questionElement.value.trim();
+          if (question === "") {
+            alert("Please enter all questions.");
+            return false;
+          }
+        }
+
+        // Show success message
+        const successMessage = document.getElementById("successMessage");
+        successMessage.textContent = "Form submitted successfully!";
+        setTimeout(() => {
+          successMessage.textContent = "";
+        }, 3000);
+
+        // Submit the form
+        return true;
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
