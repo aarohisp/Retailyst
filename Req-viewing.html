@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="public/css/stylescreen3.css" />
+    <title>Retailyst</title>
+    <style>
+      /* Add custom CSS here */
+      .thumbnail {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light bg-transparent"
+      id="gtco-main-nav"
+    >
+      <div class="container">
+        <a class="navbar-brand">Retailyst</a>
+        <button
+          class="navbar-toggler"
+          data-target="#my-nav"
+          onclick="myFunction(this)"
+          data-toggle="collapse"
+        >
+          <span class="bar1"></span> <span class="bar2"></span>
+          <span class="bar3"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#news">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-4">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form
+            action="/upload"
+            method="post"
+            class="form"
+            onsubmit="return validateForm()"
+            enctype="multipart/form-data"
+          >
+            <h3 class="text-center mb-4">View User Requirements</h3>
+            <div class="mb-3">
+              <label for="userRequirements" class="form-label"
+                ><strong>Requirements:</strong></label
+              >
+              <textarea
+                name="userRequirements"
+                id="userRequirements"
+                class="form-control"
+                cols="30"
+                rows="5"
+                placeholder="User's requirements will be displayed here"
+                readonly
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="downloadLink" class="form-label"
+                ><strong>Download Link:</strong></label
+              >
+              <a
+                href="path_to_download_file"
+                class="form-control"
+                target="_blank"
+                >Download User's File</a
+              >
+            </div>
+            <div class="mb-3">
+              <label for="userImages" class="form-label"
+                ><strong>Images:</strong></label
+              >
+              <div class="d-flex flex-wrap" id="imageContainer"></div>
+              <input
+                type="file"
+                name="userImages"
+                id="userImages"
+                class="form-control"
+                accept="image/*"
+                multiple
+                style="display: none"
+              />
+              <button
+                type="button"
+                class="btn btn-secondary mt-3"
+                onclick="document.getElementById('userImages').click()"
+              >
+                Upload Images
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function validateForm() {
+        const requirements = document.getElementById("userRequirements").value;
+        if (requirements.trim() === "") {
+          alert("Please enter your requirements.");
+          return false;
+        }
+        return true;
+      }
+
+      document
+        .querySelector("#userImages")
+        .addEventListener("change", (event) => {
+          const imageContainer = document.getElementById("imageContainer");
+          imageContainer.innerHTML = "";
+
+          const files = event.target.files;
+          for (const file of files) {
+            const reader = new FileReader();
+
+            reader.onload = function () {
+              const img = document.createElement("img");
+              img.src = reader.result;
+              img.alt = file.name;
+              img.classList.add("thumbnail");
+              imageContainer.appendChild(img);
+            };
+
+            reader.readAsDataURL(file);
+          }
+        });
+    </script>
+  </body>
+</html>
